@@ -24,6 +24,7 @@ while True:
     else:
         print('Nível inválido!\n')
 
+tentativas_falhas = 0
 for i in range(tentativas):
     palpite = int(input(f'{nome_jogador}, qual o seu palpite?: '))
 
@@ -32,8 +33,11 @@ for i in range(tentativas):
         break
     elif palpite > numero_randomico:
         print('Errou para cima... Tente um número menor.\n')
+        tentativas_falhas += 1
     else:
         print('Errou para baixo... Tente outro número maior.\n')
-    
+        tentativas_falhas += 1
 
-        
+if tentativas_falhas == tentativas:
+    print('Game Over! Você utilizou todas as tentativas.\n')
+           
