@@ -10,7 +10,8 @@ print('3- Nível 3 (difícil): acerte em menos de 3 jogadas\n')
 
 tentativas = 0
 while True:
-    nivel_jogo = int(input('Digite o nível do jogo: '))
+    nivel = int(input('Digite o nível do jogo: '))
+    nivel_jogo = int(nivel)
 
     if nivel_jogo == 1:
         tentativas = 10
@@ -26,12 +27,13 @@ while True:
 
 tentativas_falhas = 0
 for i in range(tentativas):
-    palpite = int(input(f'{nome_jogador}, qual o seu palpite?: '))
+    palpite = input(f'{nome_jogador}, qual o seu palpite?: ')
+    palpite_usuario = int(palpite)
 
-    if palpite == numero_randomico:
+    if palpite_usuario == numero_randomico:
         print('Parabéns! Você acertou o número.\n')
         break
-    elif palpite > numero_randomico:
+    elif palpite_usuario > numero_randomico:
         print('Errou para cima... Tente um número menor.\n')
         tentativas_falhas += 1
     else:
