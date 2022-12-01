@@ -4,9 +4,9 @@ numero_randomico = random.randint(1, 100)
 nome_jogador = input('Digite o nome do jogador: ')
 
 print('\nRegras do nível de jogo:')
-print('1- Nível 1 (fácil): acerte em menos de 10 jogadas')
-print('2- Nível 2 (médio): acerte em menos de 5 jogadas')
-print('3- Nível 3 (difícil): acerte em menos de 3 jogadas\n')
+print('1- Nível 1 (fácil): acerte em menos de 10 jogadas.')
+print('2- Nível 2 (médio): acerte em menos de 5 jogadas.')
+print('3- Nível 3 (difícil): acerte em menos de 3 jogadas.\n')
 
 tentativas = 0
 while True:
@@ -34,11 +34,13 @@ for i in range(tentativas):
         print('Parabéns! Você acertou o número.\n')
         break
     elif palpite_usuario > numero_randomico:
+        tentativas_falhas += 1
+        print(f'\nTentativa nº{tentativas_falhas}.')
         print('Errou para cima... Tente um número menor.\n')
-        tentativas_falhas += 1
     else:
-        print('Errou para baixo... Tente outro número maior.\n')
         tentativas_falhas += 1
+        print(f'\nTentativa nº{tentativas_falhas}.')
+        print('Errou para baixo... Tente outro número maior.\n')
 
 if tentativas_falhas == tentativas:
     print('Game Over! Você utilizou todas as tentativas.\n')
