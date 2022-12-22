@@ -20,17 +20,9 @@ def jogar_novamente(resp):
         else:
             print('Opção Inválida!')
 
-    return resp        
+    return resp     
 
-numero_randomico = random.randint(1, 100)
-
-print('Bem vindo ao Jogo de Adivinhação!')
-
-nome_jogador = input('Digite o nome do jogador: ')
-
-resposta = True
-while resposta:
-
+def nivel_jogo():
     tentativas = 0
     while True:
         menu_regras()
@@ -46,6 +38,19 @@ while resposta:
             break
         else:
             print('Nível inválido!')
+
+    return tentativas        
+
+numero_randomico = random.randint(1, 100)
+
+print('--- Bem vindo ao Jogo de Adivinhação! ---')
+
+nome_jogador = input('Digite o nome do jogador: ')
+
+resposta = True
+while resposta:
+
+    tentativas = nivel_jogo()
 
     tentativas_falhas = 0
     for i in range(tentativas):
@@ -69,4 +74,6 @@ while resposta:
 
     resp = jogar_novamente(resposta)
     resposta = resp
+
+print('\nFim de jogo!\n')
            
