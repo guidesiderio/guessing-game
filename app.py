@@ -1,4 +1,5 @@
 import random
+import time
 
 def menu_regras():
     print('\nRegras do nível de jogo:')
@@ -52,13 +53,16 @@ while resposta:
 
     tentativas = nivel_jogo()
 
+    start = time.perf_counter()
+    
     tentativas_falhas = 0
     for i in range(tentativas):
+        
         palpite = input(f'{nome_jogador}, qual o seu palpite?: ')
         palpite_usuario = int(palpite)
 
         if palpite_usuario == numero_randomico:
-            print(f'Parabéns {nome_jogador}! Você acertou o número secreto em {tentativas_falhas} tentativas!\n')
+            print(f'Parabéns {nome_jogador}! Você acertou o número secreto em {tentativas_falhas} tentativas!')
             break
         elif palpite_usuario > numero_randomico:
             tentativas_falhas += 1
@@ -69,9 +73,15 @@ while resposta:
             print(f'\nTentativa nº{tentativas_falhas}.')
             print('Errou para baixo... Tente outro número maior.\n')
 
+    end = time.perf_counter() 
+
     if tentativas_falhas == tentativas:
         print('Game Over! Você utilizou todas as tentativas.\n')
 
+    
+    elapsed = end - start
+    print(f'Duração: {elapsed:.2f} segundos\n')
+    
     resp = jogar_novamente(resposta)
     resposta = resp
 
