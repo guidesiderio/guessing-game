@@ -44,6 +44,8 @@ def nivel_jogo():
 
 numero_randomico = random.randint(1, 100)
 
+
+# Início da aplicação
 print('--- Bem vindo ao Jogo de Adivinhação! ---')
 
 nome_jogador = input('Digite o nome do jogador: ')
@@ -53,8 +55,8 @@ while resposta:
 
     tentativas = nivel_jogo()
 
-    start = time.perf_counter()
-    
+    start = time.perf_counter() # Tempo inicial
+
     tentativas_falhas = 0
     for i in range(tentativas):
         
@@ -73,12 +75,11 @@ while resposta:
             print(f'\nTentativa nº{tentativas_falhas}.')
             print('Errou para baixo... Tente outro número maior.\n')
 
-    end = time.perf_counter() 
+    end = time.perf_counter() # Tempo Final
 
     if tentativas_falhas == tentativas:
-        print('Game Over! Você utilizou todas as tentativas.\n')
+        print('Game Over! Você utilizou todas as tentativas.')
 
-    
     elapsed = end - start
     print(f'Duração: {elapsed:.2f} segundos\n')
     
