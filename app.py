@@ -6,6 +6,22 @@ def menu_regras():
     print('M - Nível 2 (médio): acerte em até 5 jogadas.')
     print('D - Nível 3 (difícil): acerte em até 3 jogadas.\n')
 
+def jogar_novamente(resp):
+    resp = True
+    while True:
+        print(f'{nome_jogador}, você deseja jogar novamente?')
+        ler_resposta = input('S - Sim ou N - Não: ').upper()
+        if ler_resposta == 'S':
+            resp = True
+            break
+        elif ler_resposta == 'N':
+            resp = False
+            break
+        else:
+            print('Opção Inválida!')
+
+    return resp        
+
 numero_randomico = random.randint(1, 100)
 
 print('Bem vindo ao Jogo de Adivinhação!')
@@ -37,7 +53,7 @@ while resposta:
         palpite_usuario = int(palpite)
 
         if palpite_usuario == numero_randomico:
-            print('Parabéns! Você acertou o número.\n')
+            print(f'Parabéns {nome_jogador}! Você acertou o número secreto em {tentativas_falhas} tentativas!\n')
             break
         elif palpite_usuario > numero_randomico:
             tentativas_falhas += 1
@@ -51,17 +67,6 @@ while resposta:
     if tentativas_falhas == tentativas:
         print('Game Over! Você utilizou todas as tentativas.\n')
 
-    while True:
-        print(f'{nome_jogador}, você deseja jogar novamente?')
-        ler_resposta = input('S - Sim ou N - Não: ').upper()
-        if ler_resposta == 'S':
-            ler_resposta = 'True'
-            resposta = bool(ler_resposta)
-            break
-        elif ler_resposta == 'N':
-            ler_resposta = 'False'
-            resposta = bool(ler_resposta)
-            break
-        else:
-            print('Opção Inválida!')
+    resp = jogar_novamente(resposta)
+    resposta = resp
            
