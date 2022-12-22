@@ -1,47 +1,67 @@
 import random
 
+def menu_regras():
+    print('\nRegras do nível de jogo:')
+    print('F - Nível 1 (fácil): acerte em até 10 jogadas.')
+    print('M - Nível 2 (médio): acerte em até 5 jogadas.')
+    print('D - Nível 3 (difícil): acerte em até 3 jogadas.\n')
+
 numero_randomico = random.randint(1, 100)
+
+print('Bem vindo ao Jogo de Adivinhação!')
+
 nome_jogador = input('Digite o nome do jogador: ')
 
-print('\nRegras do nível de jogo:')
-print('1- Nível 1 (fácil): acerte em menos de 10 jogadas.')
-print('2- Nível 2 (médio): acerte em menos de 5 jogadas.')
-print('3- Nível 3 (difícil): acerte em menos de 3 jogadas.\n')
+resposta = True
+while resposta:
 
-tentativas = 0
-while True:
-    nivel = int(input('Digite o nível do jogo: '))
-    nivel_jogo = int(nivel)
+    tentativas = 0
+    while True:
+        menu_regras()
+        nivel = input('Digite o nível do jogo: ').upper()
+        if nivel == 'F':
+            tentativas = 10
+            break
+        elif nivel == 'M':
+            tentativas == 5
+            break
+        elif nivel == 'D':
+            tentativas = 3
+            break
+        else:
+            print('Nível inválido!')
 
-    if nivel_jogo == 1:
-        tentativas = 10
-        break
-    elif nivel_jogo == 2:
-        tentativas == 5
-        break
-    elif nivel_jogo == 3:
-        tentativas = 3
-        break
-    else:
-        print('Nível inválido!\n')
+    tentativas_falhas = 0
+    for i in range(tentativas):
+        palpite = input(f'{nome_jogador}, qual o seu palpite?: ')
+        palpite_usuario = int(palpite)
 
-tentativas_falhas = 0
-for i in range(tentativas):
-    palpite = input(f'{nome_jogador}, qual o seu palpite?: ')
-    palpite_usuario = int(palpite)
+        if palpite_usuario == numero_randomico:
+            print('Parabéns! Você acertou o número.\n')
+            break
+        elif palpite_usuario > numero_randomico:
+            tentativas_falhas += 1
+            print(f'\nTentativa nº{tentativas_falhas}.')
+            print('Errou para cima... Tente um número menor.\n')
+        else:
+            tentativas_falhas += 1
+            print(f'\nTentativa nº{tentativas_falhas}.')
+            print('Errou para baixo... Tente outro número maior.\n')
 
-    if palpite_usuario == numero_randomico:
-        print('Parabéns! Você acertou o número.\n')
-        break
-    elif palpite_usuario > numero_randomico:
-        tentativas_falhas += 1
-        print(f'\nTentativa nº{tentativas_falhas}.')
-        print('Errou para cima... Tente um número menor.\n')
-    else:
-        tentativas_falhas += 1
-        print(f'\nTentativa nº{tentativas_falhas}.')
-        print('Errou para baixo... Tente outro número maior.\n')
+    if tentativas_falhas == tentativas:
+        print('Game Over! Você utilizou todas as tentativas.\n')
 
-if tentativas_falhas == tentativas:
-    print('Game Over! Você utilizou todas as tentativas.\n')
+    while True:
+        print(f'{nome_jogador}, você deseja jogar novamente?')
+        ler_resposta = input('S - Sim ou N - Não: ').upper()
+        if ler_resposta == 'S':
+            ler_resposta = 'True'
+            resposta = bool(ler_resposta)
+            break
+        elif ler_resposta == 'N':
+            ler_resposta = 'False'
+            resposta = bool(ler_resposta)
+            break
+        else:
+            print('Opção Inválida!')
            
