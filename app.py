@@ -1,14 +1,16 @@
 import random
 import time
 
+# Menu de opções
 def menu_regras():
     print('\nRegras do nível de jogo:')
-    print('F - Nível 1 (fácil): acerte em até 10 jogadas.')
-    print('M - Nível 2 (médio): acerte em até 5 jogadas.')
-    print('D - Nível 3 (difícil): acerte em até 3 jogadas.\n')
+    print('"F" - Nível 1 (fácil): acerte em até 10 jogadas.')
+    print('"M" - Nível 2 (médio): acerte em até 5 jogadas.')
+    print('"D" - Nível 3 (difícil): acerte em até 3 jogadas.\n')
 
+# Função que retorna um valor booleano de acordo com a escolha do jogador
 def jogar_novamente(resp):
-    resp = True
+    resp = False
     while True:
         print(f'{nome_jogador}, você deseja jogar novamente?')
         ler_resposta = input('S - Sim ou N - Não: ').upper()
@@ -19,10 +21,11 @@ def jogar_novamente(resp):
             resp = False
             break
         else:
-            print('Opção Inválida!')
+            print('Opção Inválida!\n')
 
     return resp     
 
+# Função que retorna um número de tentativas de acordo com o nível do jogo
 def nivel_jogo():
     tentativas = 0
     while True:
@@ -38,14 +41,14 @@ def nivel_jogo():
             tentativas = 3
             break
         else:
-            print('Nível inválido!')
+            print('Nível inválido!\n')
 
     return tentativas        
 
-numero_randomico = random.randint(1, 100)
+# Gera um número inteiro aletatório entre 0 e 100
+numero_randomico = random.randint(0, 100)
 
-
-# Início da aplicação
+# Aplicação
 print('--- Bem vindo ao Jogo de Adivinhação! ---')
 
 nome_jogador = input('Digite o nome do jogador: ')
@@ -58,7 +61,7 @@ while resposta:
     start = time.perf_counter() # Tempo inicial
 
     tentativas_falhas = 0
-    for i in range(tentativas):
+    for i in range(tentativas): # Limite máximo de tentativas
         
         palpite = input(f'{nome_jogador}, qual o seu palpite?: ')
         palpite_usuario = int(palpite)
